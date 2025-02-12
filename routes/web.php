@@ -1,5 +1,13 @@
 <?php
 
+use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\returnAddUsersView;
+
+use App\Http\Controllers\HomeController;
+
+use App\Http\Controllers\TaskController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,26 +25,62 @@ Route::get('/hello/{name}', function($name) {
 });
 
 //home 1 nome do brwoser, 2 nome ficheiro dentro da view, 3 nome da rota
+
 Route::get('/home', function() {
     return view('view_home');
 }) ->name('home');
 
-Route::get('/users', function() {
-    return view('users.all_users');
-}) ->name('users.all');
+//Rotas users
+Route::get('/home', [HomeController::class, 'returnViewHome']) ->
+ name('home');
 
+Route::get('/users',[UserController::class,'returnAllUsersView'])
+->name('users.all');
+
+Route::get('/add-users',[UserController::class,'returnAddUsersView'])
+->name('users.newusers');
+
+//03.02 Quando aciona no browser chama a função
+Route::get('/insert-user-db', [UserController::class, 'insertUserIntoDB']);
+
+Route::get('/update-user-db', [UserController::class, 'updateUserIntoDB']);
+
+Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
+
+//Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
+
+//Rota Tarefa 31.01
+
+// '/task'(rota do HTML) controlador criado Função
+
+//
+Route::get('/task', [TaskController::class, 'returnView']) ->name('task');
+
+
+//10.02 name chama o nome internamente
+//definir rota e função
+Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+
+Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 
 //Exercício
+Route::get('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name('task.delete');
 
-Route::get('/newusers', function() {
-    return view('users.newusers');
-}) ->name('newusers');
+Route::get('/view-task/{id}', [TaskController::class, 'viewTask'])->name('task.view');
+
+//Rota Forms Exemplo
+Route::post('/create-users', [UserController::class, 'createUser'])->name('users.create');
+
+//Rota Forms Exercício
+Route::post('/create-task', [TaskController::class, 'createTask'])->name('task.create');
+
+Route::get('/add-tasks', [TaskController::class, 'createTask'])->name('add-tasks');
+
+Route::get('/tasks', [TaskController::class, 'createTask'])->name('tasks.all');
 
 
 
-//fallback: Sempre no fim do ficheiro. Não chama nada pois vale para todos.
+//*********fallback: Sempre no fim do ficheiro. Não chama nada pois vale para todos.
 Route::fallback(function() {
     return view('users.newusers');
 });
-
-
