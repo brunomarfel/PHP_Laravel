@@ -15,6 +15,7 @@ Route::get('/', function () {
 }) ->name('welcome');
 
 //Registrar rota, chamar função e retornar ação
+
 Route::get('/hello', function() {
      return '<h1>Olá, FrontEnd!</h1>';
 }) ->name('hello');
@@ -74,9 +75,18 @@ Route::post('/create-users', [UserController::class, 'createUser'])->name('users
 //Rota Forms Exercício
 Route::post('/create-task', [TaskController::class, 'createTask'])->name('task.create');
 
-Route::get('/add-tasks', [TaskController::class, 'createTask'])->name('add-tasks');
+//Route::get('/add-tasks', [TaskController::class, 'createTask'])->name('add-tasks');
 
-Route::get('/tasks', [TaskController::class, 'createTask'])->name('tasks.all');
+//Route::get('/tasks', [TaskController::class, 'createTask'])->name('tasks.all');
+
+
+//Adiconar Tarefas
+Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all');
+
+
+
+//Denominaçoes: 1 nome do brwoser, 2 nome ficheiro dentro da view, 3 nome da rota
+
 
 
 

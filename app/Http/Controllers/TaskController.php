@@ -93,6 +93,17 @@ return redirect()->route('tasks.all')->with('message', 'Tarefa adicionada!');
 
 }
 
+public function createTasks()
+{
+   
+    return view('users.taskscreate');
+
+}
+
+
+
+
+
 //
 }
 

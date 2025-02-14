@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Olá, estou em casa!</h1>
+    <h1>Olá, Bruno</h1>
     <hr>
     <img src="{{asset('img/ImagemGoogle.jpg')}}" alt="" width="300" height="200">
     <hr>
@@ -23,12 +23,15 @@
     <hr>
 
     <ul>
-        <li><a href="{{ route('users.all') }}">Todos os users</a></li>
+        <li><a href="{{ route('users.all') }}">Todos os usuários</a></li>
         <li><a href="{{ route('welcome') }}">Welcome Page</a></li>
         <li><a href="{{ route('hello') }}">Hello</a></li>
         <li><a href="{{ route('users.newusers') }}">Adicionar usuários</a></li>
         <li><a href="{{ route('task') }}">Todas as Tarefas</a></li>
+        <li><a href="{{ route('tasks.all') }}">Adicionar Tarefas</a></li>
     </ul>
+
+
 
 
 @endsection
