@@ -14,6 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 }) ->name('welcome');
 
+
 //Registrar rota, chamar função e retornar ação
 
 Route::get('/hello', function() {
@@ -25,7 +26,6 @@ Route::get('/hello/{name}', function($name) {
     return '<h1>Olá '.$name.'</h1>';
 });
 
-//home 1 nome do brwoser, 2 nome ficheiro dentro da view, 3 nome da rota
 
 Route::get('/home', function() {
     return view('view_home');
@@ -35,11 +35,9 @@ Route::get('/home', function() {
 Route::get('/home', [HomeController::class, 'returnViewHome']) ->
  name('home');
 
-Route::get('/users',[UserController::class,'returnAllUsersView'])
-->name('users.all');
+Route::get('/users',[UserController::class,'returnAllUsersView'])->name('users.all');
 
-Route::get('/add-users',[UserController::class,'returnAddUsersView'])
-->name('users.newusers');
+Route::get('/add_users',[UserController::class,'returnAddUsersView'])->name('users.newusers');
 
 //03.02 Quando aciona no browser chama a função
 Route::get('/insert-user-db', [UserController::class, 'insertUserIntoDB']);
@@ -83,9 +81,11 @@ Route::post('/create-task', [TaskController::class, 'createTask'])->name('task.c
 //Adiconar Tarefas
 Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all');
 
-
-
 //Denominaçoes: 1 nome do brwoser, 2 nome ficheiro dentro da view, 3 nome da rota
+
+
+//Intermedia
+Route::get('/gift', [UserController::class, 'createGift'])->name('giftCreate');
 
 
 

@@ -76,7 +76,7 @@ class UserController extends Controller
     }
 
     // *********************************
-    //Chamar rota do web.phm para acionar a função
+    //Chamar rota do web.php para acionar a função
     public function updateUserIntoDB(){
         DB::table('users') //seleciona a tabela
         ->where('id', 3) //onde na tabela
@@ -150,8 +150,12 @@ return redirect()->route('users.all')->with('message', 'Utilizador adicionado co
 
 }
 
+//**********
 
-
+public function createGift()
+{
+        return view('view_gift');
+}
 
 
 

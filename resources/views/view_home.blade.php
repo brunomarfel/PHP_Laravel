@@ -2,10 +2,14 @@
 
 @section('content')
 
-    <h1>Olá, Bruno</h1>
+    <h3>Olá, Bruno</h3>
+
     <hr>
+
     <img src="{{asset('img/ImagemGoogle.jpg')}}" alt="" width="300" height="200">
+
     <hr>
+
     <h6>{{$myVar}}</h6>
     <hr>
     <h6>Olá {{$myName}}</h6>
@@ -29,9 +33,8 @@
         <li><a href="{{ route('users.newusers') }}">Adicionar usuários</a></li>
         <li><a href="{{ route('task') }}">Todas as Tarefas</a></li>
         <li><a href="{{ route('tasks.all') }}">Adicionar Tarefas</a></li>
+        <li><a href="{{ route('giftCreate') }}">Presente</a></li>
     </ul>
-
-
 
 
 @endsection

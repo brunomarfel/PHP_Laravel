@@ -10,9 +10,9 @@
 @extends('layout.fe_layout')
 @section('content')
 
-<h1>Olá, aqui vai ter todos os usuários sem ser da Base de Dados.</h1>
+<h3>Olá, aqui vai ter todos os usuários sem ser da Base de Dados.</h3>
 <hr>
-<h1>Olá {{$myName}}</h1>
+<h3>Olá {{$myName}}</h3>
 <hr>
 <ul>
     @foreach ($allUsers as $user)
@@ -41,9 +41,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->address }}</td>
                     <<td><a href="{{route('users.view',$user->id)}}" class="btn btn-info">Ver</a></td>
-                {{-- chamar rora com parametro --}}
                     <td><a href="{{route('users.delete', $user->id)}}" class="btn btn-danger">Apagar</a></td>
-
                 </tr>
             @endforeach
 
