@@ -33,7 +33,7 @@
         <li><a href="{{ route('users.newusers') }}">Adicionar usuários</a></li>
         <li><a href="{{ route('task') }}">Todas as Tarefas</a></li>
         <li><a href="{{ route('tasks.all') }}">Adicionar Tarefas</a></li>
-        <li><a href="{{ route('giftCreate') }}">Presente</a></li>
+        <li><a href="{{ route('gifts') }}">Presente</a></li>
     </ul>
 
 

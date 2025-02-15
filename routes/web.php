@@ -87,7 +87,22 @@ Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all
 //Intermedia
 Route::get('/gift', [UserController::class, 'createGift'])->name('giftCreate');
 
+Route::get('/gift', [UserController::class, 'listGifts'])->name('gifts.index');
 
+// routes/web.php
+
+
+Route::get('/gift', [UserController::class, 'index']);
+
+
+
+use App\Models\Gift; // Certifique-se de importar o modelo corretamente
+
+Route::get('/gift', function(){
+    $myGifts = Gift::all(); // Nome do modelo corrigido
+
+    return view('view_gift', ['gifts' => $myGifts]);
+});
 
 
 //*********fallback: Sempre no fim do ficheiro. Não chama nada pois vale para todos.

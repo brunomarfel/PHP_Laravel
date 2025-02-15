@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 
+
 class UserController extends Controller
 {
     public function returnAllUsersView(){
@@ -19,9 +20,10 @@ class UserController extends Controller
         //da função acessória
         $usersFromDB = $this->getUsersFromDB();
 
+
         //dd($usersFromDB);
 
-        return view('users.all_users', compact('myName', 'allUsers', 'usersFromDB'));
+        return view('users.all_users', compact('myName', 'allUsers', 'usersFromDB', 'gift'));
     }
 
     public function returnAddUsersView(){
@@ -123,10 +125,14 @@ public function deleteUser($id){
 public function viewUser($id){
     $ourUser = DB::table('users')
     ->where('id', $id)
-    ->first(); //first bucas uma linha e get busca um array
+    ->first(); //first busca uma linha e get busca um array
 
     return view('users.view_user', compact('ourUser'));
 }
+
+
+
+
 
 //*Função Forms*/
 
@@ -150,12 +156,25 @@ return redirect()->route('users.all')->with('message', 'Utilizador adicionado co
 
 }
 
-//**********
+//**********Intermedia
 
 public function createGift()
 {
         return view('view_gift');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
