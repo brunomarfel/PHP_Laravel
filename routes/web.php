@@ -90,6 +90,18 @@ Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all
 
 Route::get('gifts/', [GiftsController::class, 'returnGifts'])->name('gifts');
 
+
+Route::get('gifts/{gift}', [GiftsController::class, 'verGifts'])->name('gifts.show');
+
+
+
+// Route::get('gifts/create', [GiftsController::class, 'showForm'])->name('gifts.create');
+
+
+// Route::post('gifts', [GiftsController::class, 'create'])->name('gifts.store');
+
+
+
 // Route::get('gifts/{id}', [UserController::class, 'showGift'])->name('gifts.show');
 // Route::delete('gifts/{id}', [UserController::class, 'destroyGift'])->name('gifts.destroy');
 
