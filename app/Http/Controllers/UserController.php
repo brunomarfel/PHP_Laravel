@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 
+use App\Models\Gift;
+
+
+
 
 class UserController extends Controller
 {
@@ -20,10 +24,9 @@ class UserController extends Controller
         //da função acessória
         $usersFromDB = $this->getUsersFromDB();
 
-
         //dd($usersFromDB);
 
-        return view('users.all_users', compact('myName', 'allUsers', 'usersFromDB', 'gift'));
+        return view('users.all_users', compact('myName', 'allUsers', 'usersFromDB'));
     }
 
     public function returnAddUsersView(){
@@ -158,10 +161,38 @@ return redirect()->route('users.all')->with('message', 'Utilizador adicionado co
 
 //**********Intermedia
 
+//public function createGift()
+//{
+        //return view('view_gift');
+//}
+
 public function createGift()
 {
-        return view('view_gift');
+    $gifts = Gift::with('user')->get(); // Buscar todas as prendas com os usuários relacionados
+    return view('view_gift', compact('gifts')); // Passar os dados para a view
 }
+
+// public function showGift($id)
+// {
+//     $gift = Gift::with('user')->findOrFail($id);
+//     return view('view_single_gift', compact('gift'));
+// }
+
+// public function destroyGift($id)
+// {
+//     $gift = Gift::findOrFail($id);
+//     $gift->delete();
+
+//     return redirect()->route('gifts')->with('success', 'Prenda apagada com sucesso!');
+// }
+
+
+
+
+
+
+
+
 
 
 

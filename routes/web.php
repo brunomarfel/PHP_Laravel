@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\TaskController;
 
+use App\Http\Controllers\GiftsController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -85,24 +87,21 @@ Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all
 
 
 //Intermedia
-Route::get('/gift', [UserController::class, 'createGift'])->name('giftCreate');
 
-Route::get('/gift', [UserController::class, 'listGifts'])->name('gifts.index');
+Route::get('gifts/', [GiftsController::class, 'returnGifts'])->name('gifts');
 
-// routes/web.php
-
-
-Route::get('/gift', [UserController::class, 'index']);
+// Route::get('gifts/{id}', [UserController::class, 'showGift'])->name('gifts.show');
+// Route::delete('gifts/{id}', [UserController::class, 'destroyGift'])->name('gifts.destroy');
 
 
 
-use App\Models\Gift; // Certifique-se de importar o modelo corretamente
 
-Route::get('/gift', function(){
-    $myGifts = Gift::all(); // Nome do modelo corrigido
 
-    return view('view_gift', ['gifts' => $myGifts]);
-});
+
+
+
+
+
 
 
 //*********fallback: Sempre no fim do ficheiro. Não chama nada pois vale para todos.
