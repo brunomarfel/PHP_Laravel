@@ -97,13 +97,16 @@ Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all
 
 Route::get('gifts/', [GiftsController::class, 'returnGifts'])->name('gifts');
 
-Route::get('gifts/{gift}', [GiftsController::class, 'verGifts'])->name('gifts.show');
+Route::get('gifts/{gift}', [GiftsController::class, 'viewGifts'])->name('gifts.view');
+
 
 //Formulario
 
 Route::post('/gifts', [GiftsController::class, 'createGifts'])->name('gifts.create');
 
 Route::get('/gifts/{id}', [GiftsController::class, 'showGiftDetails'])->name('gifts.view');
+
+
 
 
 

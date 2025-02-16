@@ -17,7 +17,7 @@ class GiftsController extends Controller
 //View
 public function returnGifts()
 {
-    $users=DB::table('users')->get(); //variavel
+    $users=DB::table('users')->get(); //corrige: compact(): Undefined variable $users
 
     $gifts = Gift::join('users', 'gifts.user_id', '=', 'users.id')
                  ->select('gifts.*', 'users.name as user_name', 'gifts.spent_value')

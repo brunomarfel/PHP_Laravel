@@ -40,7 +40,7 @@
     <hr>
 
     @if(session('message'))
-    <div class="alert alert-sucess">
+    <div class="alert alert-success">
         {{session('message')}}
     </div>
     @endif
@@ -49,62 +49,49 @@
 
     <hr>
 
-    <form method="POST" action="{{ route('gifts.create') }}">
-        @csrf
+    <form method="POST" action="{{route('gifts.create')}}">
+
+        @csrf {{-- obrigatorio --}}
+
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
             <input required name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp">
-            @error('name')<div class="text-danger">Invalido!</div>@enderror
+            @error('name')
+            Invalido!
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="estimated_value" class="form-label">Valor Estimado (€)</label>
             <input required name="estimated_value" type="text" class="form-control" id="estimated_value" aria-describedby="emailHelp">
-            @error('estimated_value')<div class="text-danger">Invalido!</div>@enderror
+            @error('estimated_value')
+            Invalido!
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="spent_value" class="form-label">Valor Gasto (€)</label>
             <input required name="spent_value" type="text" class="form-control" id="spent_value" aria-describedby="emailHelp">
-            @error('spent_value')<div class="text-danger">Invalido!</div>@enderror
+            @error('spent_value')
+            Invalido!
+            @enderror
         </div>
 
         <div class="mb-3">
             <label for="user_id" class="form-label">Usuário</label>
             <select name="user_id" id="user_id" class="form-control">
                 @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
             </select>
-            @error('user_id')<div class="text-danger">Invalido!</div>@enderror
+            @error('user_id')
+            Invalido!
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>
 
-    {{-- <form>
-        <fieldset disabled>
-          <legend>Disabled fieldset example</legend>
-          <div class="mb-3">
-            <label for="disabledTextInput" class="form-label">Disabled input</label>
-            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
-          </div>
-          <div class="mb-3">
-            <label for="disabledSelect" class="form-label">Disabled select menu</label>
-            <select id="disabledSelect" class="form-select">
-              <option>Disabled select</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
-              <label class="form-check-label" for="disabledFieldsetCheck">
-                Can't check this
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </fieldset>
-      </form> --}}
-
 @endsection
+
+
