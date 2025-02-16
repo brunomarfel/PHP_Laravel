@@ -10,12 +10,13 @@ use App\Http\Controllers\TaskController;
 
 use App\Http\Controllers\GiftsController;
 
+use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 }) ->name('welcome');
-
 
 //Registrar rota, chamar função e retornar ação
 
@@ -27,7 +28,6 @@ Route::get('/hello', function() {
 Route::get('/hello/{name}', function($name) {
     return '<h1>Olá '.$name.'</h1>';
 });
-
 
 Route::get('/home', function() {
     return view('view_home');
@@ -93,33 +93,17 @@ Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all
 
 //Denominaçoes: 1 nome do brwoser, 2 nome ficheiro dentro da view, 3 nome da rota
 
-
 //Intermedia
 
 Route::get('gifts/', [GiftsController::class, 'returnGifts'])->name('gifts');
 
-
 Route::get('gifts/{gift}', [GiftsController::class, 'verGifts'])->name('gifts.show');
 
+//Formulario
 
+Route::post('/gifts', [GiftsController::class, 'createGifts'])->name('gifts.create');
 
-// Route::get('gifts/create', [GiftsController::class, 'showForm'])->name('gifts.create');
-
-
-// Route::post('gifts', [GiftsController::class, 'create'])->name('gifts.store');
-
-
-
-// Route::get('gifts/{id}', [UserController::class, 'showGift'])->name('gifts.show');
-// Route::delete('gifts/{id}', [UserController::class, 'destroyGift'])->name('gifts.destroy');
-
-
-
-
-
-
-
-
+Route::get('/gifts/{id}', [GiftsController::class, 'showGiftDetails'])->name('gifts.view');
 
 
 

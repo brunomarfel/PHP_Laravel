@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 use App\Models\Gift;
 
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
-
 class GiftsController extends Controller
 {
 
     public function returnGifts()
 {
+    $users=DB::table('users')->get();
     $gifts = Gift::join('users', 'gifts.user_id', '=', 'users.id')
                  ->select('gifts.*', 'users.name as user_name', 'gifts.spent_value')
                  ->get();
 
-    return view('view_gift', compact('gifts'));
+    return view('view_gift', compact('gifts', 'users'));
 
 }
 
@@ -41,56 +43,40 @@ public function deleteGifts($id){
     return back();
 }
 
+//Formulario
+
+//Receber e validar
+public function createGifts(Request $request)
+{
+    //dd($request->all());
+    $request->validate([
+        'name' => 'required|string|max:50',
+        'estimated_value' => 'required|numeric',
+        'spent_value' => 'nullable|numeric',
+        'user_id' => 'required|exists:users,id'
+    ]);
+
+    //Inserir BD
+    Gift::insert([  //ver diferença entre insert e create
+        'name' => $request->name,
+        'estimated_value' => $request->estimated_value,
+        'spent_value' => $request->spent_value,
+        'user_id' => $request->user_id,
+    ]);
+
+    return redirect()->back()->with('message', 'Presente adicionado!');
+}
+
+public function showGiftDetails($id)
+{
+    $users = User::all();
+    $ourGift = Gift::find($id);
+
+    return view('view_gift', compact('users', 'ourGift'));
+}
 
 
 
 
-
-
-
-
-//Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gisfts.delete'); //Rota Btn Apagar
-
-
-
-
-
-// public function verGifts($id)
-// {
-//     $gift = Gift::findOrFail($id);
-
-//     return view('view_gift_details', compact('gift'));
-// }
-
-// public function showForm()
-// {
-//     $users = User::all();  // Recupera todos os usuários
-//     dd($users);  // Depura os dados
-//     return view('add_gift', compact('users'));  // Passa os usuários para a view
-// }
-
-// public function create(Request $request)
-// {
-//     // Validar os dados do formulário
-//     $validated = $request->validate([
-//         'name' => 'required|string|max:255',
-//         'estimated_value' => 'required|numeric',
-//         'spent_value' => 'nullable|numeric',
-//         'user_id' => 'required|exists:users,id', // Verificar se o usuário existe
-//     ]);
-
-//     // Criar o presente
-//     Gift::create($validated);
-
-//     return redirect()->route('gifts')->with('success', 'Presente adicionado com sucesso!');
-// }
-
-
-
-
-
-
-
-
-    //
+//
 }
