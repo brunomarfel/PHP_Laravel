@@ -10,9 +10,38 @@ use App\Http\Controllers\TaskController;
 
 use App\Http\Controllers\GiftsController;
 
-use App\Models\User;
-
 use Illuminate\Support\Facades\Route;
+
+
+//***********Intermedia***********
+
+Route::get('gifts/', [GiftsController::class, 'returnGifts'])->name('gifts');
+
+Route::get('gifts/{gift}', [GiftsController::class, 'viewGifts'])->name('gifts.view');
+
+//Botoes
+
+Route::get('/view-gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gifts.view'); //Rota Btn Ver
+
+Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gifts.delete'); //Rota Btn Apagar
+
+//Formulario
+
+Route::post('/gifts', [GiftsController::class, 'createGifts'])->name('gifts.create');
+
+Route::get('/gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gifts.view');
+
+//*******************************
+
+
+
+
+
+
+
+
+
+//Denominaçoes: 1 Nome Brwoser, 2 Nome Ficheiro View, 3 Nome Rota
 
 Route::get('/', function () {
     return view('welcome');
@@ -48,29 +77,15 @@ Route::get('/update-user-db', [UserController::class, 'updateUserIntoDB']);
 
 Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
 
-//Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
-
 //Rota Tarefa 31.01
 
-// '/task'(rota do HTML) controlador criado Função
-
-//
 Route::get('/task', [TaskController::class, 'returnView']) ->name('task');
-
 
 //10.02 name chama o nome internamente
 //definir rota e função
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 
 Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
-
-//***********************************************************************************************
-Route::get('/view-gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gifts.view'); //Rota Btn Ver
-
-Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gifts.delete'); //Rota Btn Apagar
-
-//***********************************************************************************************
-
 
 //Exercício
 Route::get('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name('task.delete');
@@ -83,33 +98,8 @@ Route::post('/create-users', [UserController::class, 'createUser'])->name('users
 //Rota Forms Exercício
 Route::post('/create-task', [TaskController::class, 'createTask'])->name('task.create');
 
-//Route::get('/add-tasks', [TaskController::class, 'createTask'])->name('add-tasks');
-
-//Route::get('/tasks', [TaskController::class, 'createTask'])->name('tasks.all');
-
-
 //Adiconar Tarefas
 Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all');
-
-//Denominaçoes: 1 nome do brwoser, 2 nome ficheiro dentro da view, 3 nome da rota
-
-//Intermedia
-
-Route::get('gifts/', [GiftsController::class, 'returnGifts'])->name('gifts');
-
-Route::get('gifts/{gift}', [GiftsController::class, 'viewGifts'])->name('gifts.view');
-
-
-//Formulario
-
-Route::post('/gifts', [GiftsController::class, 'createGifts'])->name('gifts.create');
-
-Route::get('/gifts/{id}', [GiftsController::class, 'showGiftDetails'])->name('gifts.view');
-
-
-
-
-
 
 //*********fallback: Sempre no fim do ficheiro. Não chama nada pois vale para todos.
 Route::fallback(function() {

@@ -29,13 +29,17 @@ public function returnGifts()
 
 //Btn Ver
 public function viewGifts($id){ //usar join
+
     $ourGift = DB::table('gifts')
-    ->join('users', 'gifts.user_id', '=', 'users.id') //'=' opcional
-    ->select('gifts.*', 'users.name as user_name')
-    ->where('gifts.id', $id)
-    ->first(); //first: 1º linha get:array
-    return view('gifts_details', compact('ourGift'));
+        ->join('users', 'gifts.user_id', '=', 'users.id') //'=' opcional
+        ->select('gifts.*', 'users.name as user_name')
+        ->where('gifts.id', $id)
+        ->first();  //first: 1º linha get:array
+
+        return view('gifts_details', compact('ourGift'));
 }
+
+
 
 //Btm Apagar
 public function deleteGifts($id){
@@ -69,17 +73,6 @@ public function createGifts(Request $request)
 
     return redirect()->back()->with('message', 'Presente adicionado!');
 }
-
-public function showGiftDetails($id)
-{
-    $users = User::all();
-    $ourGift = Gift::find($id);
-
-    return view('view_gift', compact('users', 'ourGift'));
-}
-
-
-
 
 //
 }

@@ -15,5 +15,3 @@
 <p>Usuario: {{$ourGift->user_name}}</p>
 
 @endsection
-
-{{-- Revisado --}}

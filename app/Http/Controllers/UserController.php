@@ -133,7 +133,6 @@ public function viewUser($id){
     return view('users.view_user', compact('ourUser'));
 }
 
-
 //*Função Forms*/
 
 //Receber e Válidar
@@ -153,35 +152,7 @@ User::insert([
 ]);
 
 return redirect()->route('users.all')->with('message', 'Utilizador adicionado com sucesso!');
-
 }
-
-//**********Intermedia
-
-//public function createGift()
-//{
-        //return view('view_gift');
-//}
-
-public function createGift()
-{
-    $gifts = Gift::with('user')->get(); // Buscar todas as prendas com os usuários relacionados
-    return view('view_gift', compact('gifts')); // Passar os dados para a view
-}
-
-// public function showGift($id)
-// {
-//     $gift = Gift::with('user')->findOrFail($id);
-//     return view('view_single_gift', compact('gift'));
-// }
-
-// public function destroyGift($id)
-// {
-//     $gift = Gift::findOrFail($id);
-//     $gift->delete();
-
-//     return redirect()->route('gifts')->with('success', 'Prenda apagada com sucesso!');
-// }
 
 
 
