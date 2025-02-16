@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\DB;
 class GiftsController extends Controller
 {
 
-    public function returnGifts()
+
+//View
+public function returnGifts()
 {
-    $users=DB::table('users')->get();
+    $users=DB::table('users')->get(); //variavel
+
     $gifts = Gift::join('users', 'gifts.user_id', '=', 'users.id')
                  ->select('gifts.*', 'users.name as user_name', 'gifts.spent_value')
                  ->get();
