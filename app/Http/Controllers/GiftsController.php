@@ -30,10 +30,24 @@ public function viewGifts($id){
     return view('gifts_details', compact('ourGift'));
 }
 
+//Btm Apagar
+public function deleteGifts($id){
+    DB::table('gifts') //apaga prenda associada ao user
+    ->where('id', $id)
+    ->delete();
+
+    return back();
+}
 
 
 
 
+
+
+
+
+
+//Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gisfts.delete'); //Rota Btn Apagar
 
 
 

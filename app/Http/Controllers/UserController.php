@@ -133,28 +133,6 @@ public function viewUser($id){
     return view('users.view_user', compact('ourUser'));
 }
 
-public function viewGifts($id){
-    $ourGift = DB::table('gifts')
-    ->where('id', $id)
-    ->first(); //first busca uma linha e get busca um array
-
-    return view('gifts_details', compact('ourGift'));
-
-}
-
-
-
-
-
-//Route::get('/view-gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gisfts.view');
-
-
-//Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
-
-
-
-
-
 
 //*Função Forms*/
 

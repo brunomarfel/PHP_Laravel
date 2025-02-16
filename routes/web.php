@@ -65,11 +65,11 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('us
 Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 
 //***********************************************************************************************
-Route::get('/view-gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gisfts.view'); //Rota Btn Ver
+Route::get('/view-gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gifts.view'); //Rota Btn Ver
 
-Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gisfts.delete');
+Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gifts.delete'); //Rota Btn Apagar
+
 //***********************************************************************************************
-
 
 
 //Exercício

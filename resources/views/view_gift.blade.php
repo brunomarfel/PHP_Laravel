@@ -25,12 +25,8 @@
         <td>{{ $gift->estimated_value }}</td>
         <td>{{ $gift->spent_value}}</td>
         <td>{{ $gift->user_name }}</td>
-        <td><a href="{{route('gisfts.view',$gift->id)}}" class="btn btn-info">Ver</a></td>
-        <td><a href="" class="btn btn-danger">Apagar</a></td>
-
-    {{-- <td><a href="{{route('users.view',$user->id)}}" class="btn btn-info">Ver</a></td>
-    <td><a href="{{route('users.delete', $user->id)}}" class="btn btn-danger">Apagar</a></td> --}}
-
+        <td><a href="{{route('gifts.view',$gift->id)}}" class="btn btn-info">Ver</a></td>
+        <td><a href="{{route('gifts.delete',$gift->id)}}" class="btn btn-danger">Apagar</a></td>
 
 
 
