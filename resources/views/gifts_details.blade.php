@@ -6,10 +6,11 @@
 
 <hr>
 
-<p>Prenda:{{ $ourGift->name}}</p>
-<p>Valor Estimado:{{ $ourGift->estimated_value}}</p>
-<p>Valor Gasto:{{$ourGift->spent_value}}</p>
-{{-- <p>Usuario:{{$ourGift->user_id}}</p> --}}
+<p>ID: {{ $ourGift->id}}</p>
+<p>Presente: {{ $ourGift->name}}</p>
+<p>Valor Estimado (€): {{ $ourGift->estimated_value}}</p>
+<p>Valor Gasto (€): {{$ourGift->spent_value}}</p>
+<p>Usuario: {{$ourGift->user_name}}</p>
 
 @endsection
 

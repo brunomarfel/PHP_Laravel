@@ -23,16 +23,18 @@ class GiftsController extends Controller
 }
 
 //Btn Ver
-public function viewGifts($id){
+public function viewGifts($id){ //usar join
     $ourGift = DB::table('gifts')
-    ->where('id', $id)
-    ->first(); //first busca uma linha e get busca um array
+    ->join('users', 'gifts.user_id', '=', 'users.id') //'=' opcional
+    ->select('gifts.*', 'users.name as user_name')
+    ->where('gifts.id', $id)
+    ->first(); //first: 1º linha get:array
     return view('gifts_details', compact('ourGift'));
 }
 
 //Btm Apagar
 public function deleteGifts($id){
-    DB::table('gifts') //apaga prenda associada ao user
+    DB::table('gifts') //presente associado ao user
     ->where('id', $id)
     ->delete();
 
