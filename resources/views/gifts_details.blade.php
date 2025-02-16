@@ -2,7 +2,9 @@
 
 @section('content')
 
-<h2>Detalhes</h2>
+<hr>
+
+<h3>Detalhes: Presentes</h3>
 
 <hr>
 
