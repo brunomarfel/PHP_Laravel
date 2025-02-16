@@ -6,6 +6,9 @@ use App\Models\Gift;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+
+
 class GiftsController extends Controller
 {
 
@@ -16,7 +19,25 @@ class GiftsController extends Controller
                  ->get();
 
     return view('view_gift', compact('gifts'));
+
 }
+
+//Btn Ver
+public function viewGifts($id){
+    $ourGift = DB::table('gifts')
+    ->where('id', $id)
+    ->first(); //first busca uma linha e get busca um array
+    return view('gifts_details', compact('ourGift'));
+}
+
+
+
+
+
+
+
+
+
 
 // public function verGifts($id)
 // {

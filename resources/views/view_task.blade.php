@@ -3,7 +3,7 @@
 
 @section('content')
 
-{{-- <h1>Listagem de Tarefas</h1>
+<h1>Listagem de Tarefas</h1>
 
 <hr>
 
@@ -23,9 +23,9 @@
 
     @endforeach
 
-</ul> --}}
+</ul>
 
-{{-- <h3>Users vindos da BD</h3>
+<h3>Users vindos da BD</h3>
 
 <table class="table">
     <thead>
@@ -55,7 +55,7 @@
                 </tr>
             @endforeach
 
-    </table> --}}
+    </table>
 
 
     @if(session('message'))

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>Lista de Presentes</h3>
+<h3>Lista de Presentess</h3>
 
     <table class="table table-striped">
         <thead>
@@ -23,10 +23,18 @@
         <td>{{ $gift->id }}</td>
         <td>{{ $gift->name }}</td>
         <td>{{ $gift->estimated_value }}</td>
-        <td>{{ $gift->spent_value ?? 'Valor não informado' }}</td>
+        <td>{{ $gift->spent_value}}</td>
         <td>{{ $gift->user_name }}</td>
-        <td><a href="" class="btn btn-info">Ver</a></td>
+        <td><a href="{{route('gisfts.view',$gift->id)}}" class="btn btn-info">Ver</a></td>
         <td><a href="" class="btn btn-danger">Apagar</a></td>
+
+    {{-- <td><a href="{{route('users.view',$user->id)}}" class="btn btn-info">Ver</a></td>
+    <td><a href="{{route('users.delete', $user->id)}}" class="btn btn-danger">Apagar</a></td> --}}
+
+
+
+
+
     </tr>
             @endforeach
 

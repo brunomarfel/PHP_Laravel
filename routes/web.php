@@ -64,6 +64,14 @@ Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('us
 
 Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 
+//***********************************************************************************************
+Route::get('/view-gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gisfts.view'); //Rota Btn Ver
+
+Route::get('/delete-gifts/{id}', [GiftsController::class, 'deleteGifts'])->name('gisfts.delete');
+//***********************************************************************************************
+
+
+
 //Exercício
 Route::get('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name('task.delete');
 

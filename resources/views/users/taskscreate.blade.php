@@ -2,12 +2,7 @@
 
 @section('content')
 
-    <h1>Testeeeee</h1>
-
-    
-
-
-
+    <h1>Adicionar Tarefas</h1>
 
 @endsection
 
