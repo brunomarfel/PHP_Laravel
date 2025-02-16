@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>Lista de Presentess</h3>
+<h3>Presente: Dia dos Namorados</h3>
 
     <table class="table table-striped">
         <thead>
