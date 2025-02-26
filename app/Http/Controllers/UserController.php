@@ -125,6 +125,7 @@ public function deleteUser($id){
     return back();
 }
 
+
 public function viewUser($id){
     $ourUser = DB::table('users')
     ->where('id', $id)
@@ -132,6 +133,7 @@ public function viewUser($id){
 
     return view('users.view_user', compact('ourUser'));
 }
+
 
 //*Função Forms*/
 
@@ -152,6 +154,27 @@ User::insert([
 ]);
 
 return redirect()->route('users.all')->with('message', 'Utilizador adicionado com sucesso!');
+}
+
+//********** Aula 26.02
+
+//Funçao Formulario Atualizar
+
+public function updateUser(Request $request){ //classe traz objeto do browser
+    $request->validate([
+         'name' => 'required'
+        ]);
+
+    Db::table('users')->where('id', $request->id)
+    ->update([
+        'name' =>$request->name,
+        'address' =>$request->address,
+        'nif' =>$request->nif,
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->route('users.all')->with('message', 'Utilizador actualizado com sucesso!');
+
 }
 
 

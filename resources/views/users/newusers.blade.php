@@ -18,6 +18,8 @@
     </div>
     @endif
 
+    <h2>Aqui pode adicionar novos usuarios</h2>
+
 <form method="POST" action="{{ route('users.create') }}">
     @csrf
     <div class="mb-3">

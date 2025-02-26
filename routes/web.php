@@ -101,6 +101,14 @@ Route::post('/create-task', [TaskController::class, 'createTask'])->name('task.c
 //Adiconar Tarefas
 Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all');
 
+//********** Aula 26.02
+
+//Formulario Atualizar
+Route::post("/update-user", [UserController::class, 'updateUser'])->name('users.update');
+
+
+
+
 //*********fallback: Sempre no fim do ficheiro. Não chama nada pois vale para todos.
 Route::fallback(function() {
     return view('users.newusers');
