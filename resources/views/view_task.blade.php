@@ -25,15 +25,15 @@
 
 </ul>
 
-<h3>Users vindos da BD</h3>
+<h3>Tarefas vindas da DB</h3>
 
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col"></th>
         <th scope="col">Nome</th>
         <th scope="col">Status</th>
-        <th scope="col">Data Conclusão</th>
+        <th scope="col">Descricao</th>
         <th scope="col">User</th>
         <th></th>
         <th></th>
@@ -47,9 +47,9 @@
                     <th scope="row">{{ $tasks->id }}</th>
                     <td>{{ $tasks->name}}</td>
                     <td>{{ $tasks->status }}</td>
-                    <td>{{ $tasks->due_at }}</td>
+                    <td>{{ $tasks->description }}</td>
                     <td>{{ $tasks->user_name }}</td>
-                    <<td><a href="{{route('task.view',$tasks->id)}}" class="btn btn-info">Ver</a></td>
+                    <td><a href="{{route('task.view',$tasks->id)}}" class="btn btn-info">Ver/Editar</a></td>
                     <td><a href="{{route('task.delete',$tasks->id)}}" class="btn btn-danger">Apagar</a></td>
 
                 </tr>
@@ -65,7 +65,10 @@
     @endif
 
 
-    <h1>Formulário de Tarefa</h1>
+    <hr>
+
+
+    <h3>Formulário de Tarefa</h3>
 
     <form method="POST" action="{{ route('task.create') }}">
         @csrf

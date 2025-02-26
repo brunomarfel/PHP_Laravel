@@ -103,8 +103,15 @@ Route::get('/addtasks', [TaskController::class, 'createTasks'])->name('tasks.all
 
 //********** Aula 26.02
 
-//Formulario Atualizar
+//Formulario Atualizar Usuarios
 Route::post("/update-user", [UserController::class, 'updateUser'])->name('users.update');
+
+//Formulario Atualizar Tarefas
+Route::post("/update-task", [TaskController::class, 'updateTask'])->name('tasks.update');
+
+
+
+
 
 
 

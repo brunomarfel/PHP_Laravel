@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Models\Task;
 
-//Importar
 use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
@@ -95,9 +94,25 @@ return redirect()->route('tasks.all')->with('message', 'Tarefa adicionada!');
 
 public function createTasks()
 {
-   
+
     return view('users.taskscreate');
 
+}
+
+public function updateTask(Request $request){
+    $request->validate([
+        'name' => 'required'
+       ]);
+
+       Db::table('tasks')->where('id', $request->id)
+    ->update([
+        'name' =>$request->name,
+        'status' =>$request->status,
+
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->route('task')->with('message', 'Utilizador atualizado com sucesso!');
 }
 
 

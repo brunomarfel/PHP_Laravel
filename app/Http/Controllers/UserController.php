@@ -173,9 +173,13 @@ public function updateUser(Request $request){ //classe traz objeto do browser
         'updated_at' => now(),
     ]);
 
-    return redirect()->route('users.all')->with('message', 'Utilizador actualizado com sucesso!');
+    return redirect()->route('users.all')->with('message', 'Utilizador atualizado com sucesso!');
 
 }
+
+
+
+
 
 
 
