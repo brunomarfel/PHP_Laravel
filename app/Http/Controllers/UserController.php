@@ -22,12 +22,37 @@ class UserController extends Controller
         $allUsers = $this->getUsers();
 
         //da função acessória
-        $usersFromDB = $this->getUsersFromDB();
+        // $usersFromDB = $this->getUsersFromDB();
+
+
+        // $search = null;
+
+        // if(request()->query('search')){
+        //     $search = request()->query('search');
+
+        // }else{
+        //     $search = null;
+        // }
+
+        $search = request()->query('search') ? request()->query('search'):null;
+
+
+        $usersFromDB = db::table('users');
+        if( $search){
+            $usersFromDB =  $usersFromDB->where('name', 'like', "%{$search}%")
+            ->orWhere('email', 'like', "%{$search}%")
+            ->orWhere('address', 'like', "%{$search}%");
+        }
+
+
+        $usersFromDB =  $usersFromDB ->get(); //26.02 Pesquisa Users
+
 
         //dd($usersFromDB);
 
         return view('users.all_users', compact('myName', 'allUsers', 'usersFromDB'));
     }
+
 
     public function returnAddUsersView(){
        $myName = $this->getMyVar();

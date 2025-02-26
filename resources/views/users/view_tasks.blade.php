@@ -11,9 +11,7 @@
     <form method="POST" action="{{ route('tasks.update') }}">
         @csrf
 
-
         <input type="hidden" name="id" value="{{ $ourTask->id }}" id="">
-
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Nome</label>
@@ -26,34 +24,28 @@
 
         <div class="mb-3">
             <label class="form-label">Descriçao</label>
-            <input name="status" type="text" class="form-control" value="{{ $ourTask->description }}">
+            <input name="description" type="text" class="form-control" value="{{ $ourTask->description }}">
             @error('description')
-                Status Error
+            Description Error
             @enderror
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Estado</label>
-            <input name="status" type="text" class="form-control" value="{{ $ourTask->status }}">
-            @error('status')
-                Status Error
-            @enderror
-        </div>
+        <div class="form-group">
+        <label for="exampleInputPassword1" class="fw-bold my-2">Data:</label>
+        <input type="date" name='due_at' value="{{ $ourTask->due_at }}" class="form-control">
+        @error('due_at')
+            <div class="invalid-feedback">
+                Erro na data
+            </div>
+        @enderror
 
         <div class="mb-3 dropdown">
             <label class="form-label">Responsavel da tarefa</label>
-            <input name="user_id" type="text" class="form-control" value="{{ $ourTask->status }}">
+            <input name="user_id" type="text" class="form-control" value="{{ $ourTask->user_id }}">
             @error('status')
                 Status Error
             @enderror
         </div>
-
-
-
-
-
-
-
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
 

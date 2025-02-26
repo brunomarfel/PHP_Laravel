@@ -32,8 +32,8 @@
       <tr>
         <th scope="col"></th>
         <th scope="col">Nome</th>
-        <th scope="col">Status</th>
         <th scope="col">Descricao</th>
+        <th scope="col">Data</th>
         <th scope="col">User</th>
         <th></th>
         <th></th>
@@ -46,8 +46,8 @@
                 <tr>
                     <th scope="row">{{ $tasks->id }}</th>
                     <td>{{ $tasks->name}}</td>
-                    <td>{{ $tasks->status }}</td>
                     <td>{{ $tasks->description }}</td>
+                    <td>{{ $tasks->updated_at }}</td>
                     <td>{{ $tasks->user_name }}</td>
                     <td><a href="{{route('task.view',$tasks->id)}}" class="btn btn-info">Ver/Editar</a></td>
                     <td><a href="{{route('task.delete',$tasks->id)}}" class="btn btn-danger">Apagar</a></td>

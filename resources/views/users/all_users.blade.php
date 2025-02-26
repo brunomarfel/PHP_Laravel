@@ -28,6 +28,16 @@
 
  <h3>Users vindos da BD</h3>
 
+ <hr>
+
+
+ <form action="">
+    <input type="text" name="search" value="{{ request()->query('search') }}" id="">
+    <button type="submit" class="btn btn-secondary">Procurar</button>
+</form>
+
+<hr>
+
  <table class="table">
         <thead>
             <tr>
