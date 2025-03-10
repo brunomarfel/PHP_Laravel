@@ -8,7 +8,7 @@
     <p>Morada: {{ $ourUser->address }}</p>
     <p>NIF: {{ $ourUser->nif }}</p> --}}
 
-    <form method="POST" action="{{ route('users.update') }}">
+    <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
         @csrf
 
         <input type="hidden" name="id" value="{{ $ourUser->id }}" id="">
@@ -37,6 +37,11 @@
                 erro nif
             @enderror
         </div>
+
+        <div class="mb-2">
+            <input type="file" name="photo" id="">
+        </div>
+
 
 
 

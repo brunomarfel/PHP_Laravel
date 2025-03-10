@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gift;
+
+use App\Models\User;
+
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Hash;
-
-use App\Models\User;
-
-use App\Models\Gift;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -185,8 +186,25 @@ return redirect()->route('users.all')->with('message', 'Utilizador adicionado co
 
 public function updateUser(Request $request){ //classe traz objeto do browser
     $request->validate([
-         'name' => 'required'
-        ]);
+        'name' => 'required',
+        'photo' => 'image'
+       ]);
+
+   $photoPath=null;
+   if($request->hasFile('photo')){
+       $photoPath = Storage::putFile('userPhoto',$request->photo);
+   }
+
+
+   Db::table('users')->where('id', $request->id)
+   ->update([
+       'name' =>$request->name,
+       'address' =>$request->address,
+       'nif' =>$request->nif,
+       'updated_at' => now(),
+       'photo' =>  $photoPath
+   ]);
+
 
     Db::table('users')->where('id', $request->id)
     ->update([
