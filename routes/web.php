@@ -10,6 +10,9 @@ use App\Http\Controllers\TaskController;
 
 use App\Http\Controllers\GiftsController;
 
+use App\Http\Controllers\DashboardController;
+
+
 use Illuminate\Support\Facades\Route;
 
 
@@ -32,13 +35,6 @@ Route::post('/gifts', [GiftsController::class, 'createGifts'])->name('gifts.crea
 Route::get('/gifts/{id}', [GiftsController::class, 'viewGifts'])->name('gifts.view');
 
 //*******************************
-
-
-
-
-
-
-
 
 
 //Denominaçoes: 1 Nome Brwoser, 2 Nome Ficheiro View, 3 Nome Rota
@@ -66,7 +62,7 @@ Route::get('/home', function() {
 Route::get('/home', [HomeController::class, 'returnViewHome']) ->
  name('home');
 
-Route::get('/users',[UserController::class,'returnAllUsersView'])->name('users.all');
+Route::get('/users',[UserController::class,'returnAllUsersView'])->name('users.all')->middleware('auth'); //middlewarwecl
 
 Route::get('/add_users',[UserController::class,'returnAddUsersView'])->name('users.newusers');
 
@@ -110,6 +106,11 @@ Route::post("/update-user", [UserController::class, 'updateUser'])->name('users.
 Route::post("/update-task", [TaskController::class, 'updateTask'])->name('tasks.update');
 
 
+
+//Aula 10.03 Exercicio
+
+Route::get('/dashboard', [DashboardController::class, 'returnDashboard']) ->name('dashboard')->middleware('auth');
+//utilizador, view e funçao Dashboard. middleware autenticaçao
 
 
 

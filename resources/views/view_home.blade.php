@@ -2,10 +2,14 @@
 
 @section('content')
 
-    <h3>Olá, Bruno</h3>
+{{-- nome de user autenticado --}}
+@auth
+<h3>Olá {{ Auth::user()->nif}}</h3>
+@endauth
     <hr>
     <img src="{{asset('img/ImagemGoogle.jpg')}}" alt="" width="300" height="200">
     <hr>
+
     <h6>{{$myVar}}</h6>
     <hr>
     <h6>Olá {{$myName}}</h6>

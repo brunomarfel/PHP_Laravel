@@ -13,8 +13,6 @@ use App\Models\User;
 use App\Models\Gift;
 
 
-
-
 class UserController extends Controller
 {
     public function returnAllUsersView(){
